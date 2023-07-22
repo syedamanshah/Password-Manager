@@ -9,6 +9,7 @@ import string
 import json
 import csv
 import random
+import pandas as pd
 
 def generate_password():
     length = 15
@@ -34,11 +35,6 @@ def generate_password():
     pyperclip.copy(password)
 
 
-
-import pandas as pd
-
-import csv
-
 def add_entry():
     website = w_e.get()
     email = em_e.get()
@@ -50,7 +46,7 @@ def add_entry():
             [website,email,password]
         ]
         
-        with open('D:\Cybersecurity\Internships\LearnSmasher Projects\Password_Manager\Data.csv', mode='a', newline='') as file:
+        with open('\Password_Manager\Data.csv', mode='a', newline='') as file: # Update the file path according to the location of the CSV file.
             writer = csv.writer(file)
             writer.writerows(data)
         
@@ -60,8 +56,6 @@ def add_entry():
         messagebox.showinfo(title='Password Manager', message="Successfully Saved")
     else:
         messagebox.showwarning(title="Oops", message="Don't leave any field empty!")
-
-
 
 
 def find():
@@ -86,8 +80,7 @@ def find():
     except FileNotFoundError:
         messagebox.showerror(title='Oops', message='Data file not found!')
 
-passw = 'itzzzAman@121'
-passw = ''
+passw = ''    # Here you can have any password for your password manager
 password = pyautogui.password('Enter your password: ',title = 'Password Manager Authentication')
 if password == passw:
     w = Tk()
@@ -100,7 +93,7 @@ if password == passw:
     canv.grid(column=2, row=1)
 
     # Open the image file
-    image = Image.open("D:\Cybersecurity\Internships\LearnSmasher Projects\Password_Manager\Logo.png")
+    image = Image.open("Logo.png") # This needs to be updated according to the image file which will be used as a logo.
     # Resize the image if desired
     # image = image.resize((400, 100))
     # Create a Tkinter-compatible image object
